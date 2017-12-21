@@ -1,0 +1,146 @@
+# reload config
+cmd + alt + ctrl - r : khd -e "reload"
+
+# open terminal, blazingly fast compared to iTerm/Hyper
+cmd - return : open -na /Applications/Hyper.app
+
+# focus window
+lalt - left : chunkc tiling::window --focus west
+lalt - down : chunkc tiling::window --focus south
+lalt - up : chunkc tiling::window --focus north
+lalt - right : chunkc tiling::window --focus east
+
+lcmd - down : chunkc tiling::window --focus prev
+lcmd - up : chunkc tiling::window --focus next
+
+# equalize size of windows
+lshift + lalt - 0 : chunkc tiling::desktop --equalize
+
+# swap window
+lshift + lalt - left : chunkc tiling::window --swap west
+lshift + lalt - down : chunkc tiling::window --swap south
+lshift + lalt - up : chunkc tiling::window --swap north
+lshift + lalt - right : chunkc tiling::window --swap east
+
+# move window
+lshift + lcmd - left : chunkc tiling::window --warp west
+lshift + lcmd - down : chunkc tiling::window --warp south
+lshift + lcmd - up : chunkc tiling::window --warp north
+lshift + lcmd - right : chunkc tiling::window --warp east
+
+# move floating windows / windows on a floating space
+lshift + lalt - up     : chunkc tiling::window --warp-floating fullscreen
+lshift + lalt - left   : chunkc tiling::window --warp-floating left
+lshift + lalt - right  : chunkc tiling::window --warp-floating right
+lshift + lcmd - left   : chunkc tiling::window --warp-floating top-left
+lshift + lcmd - right  : chunkc tiling::window --warp-floating top-right
+lshift + lctrl - left  : chunkc tiling::window --warp-floating bottom-left
+lshift + lctrl - right : chunkc tiling::window --warp-floating bottom-right
+
+# send window to desktop
+rshift + ralt - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
+rshift + ralt - z : chunkc tiling::window --send-to-desktop prev
+rshift + ralt - c : chunkc tiling::window --send-to-desktop next
+rshift + ralt - 1 : chunkc tiling::window --send-to-desktop 1
+rshift + ralt - 2 : chunkc tiling::window --send-to-desktop 2
+rshift + ralt - 3 : chunkc tiling::window --send-to-desktop 3
+rshift + ralt - 4 : chunkc tiling::window --send-to-desktop 4
+rshift + ralt - 5 : chunkc tiling::window --send-to-desktop 5
+rshift + ralt - 6 : chunkc tiling::window --send-to-desktop 6
+
+# send window to desktop and switch desktop
+rshift + rcmd - x : `id=$(chunkc get _last_active_desktop); chunkc tiling::window -d $id; khd -p "cmd + alt - $id" &> /dev/null`
+rshift + rcmd - z : chunkc tiling::window -d prev; khd -p "cmd + alt - z"
+rshift + rcmd - c : chunkc tiling::window -d next; khd -p "cmd + alt - c"
+rshift + rcmd - 1 : chunkc tiling::window -d 1; khd -p "cmd + alt - 1"
+rshift + rcmd - 2 : chunkc tiling::window -d 2; khd -p "cmd + alt - 2"
+rshift + rcmd - 3 : chunkc tiling::window -d 3; khd -p "cmd + alt - 3"
+rshift + rcmd - 4 : chunkc tiling::window -d 4; khd -p "cmd + alt - 4"
+rshift + rcmd - 5 : chunkc tiling::window -d 5; khd -p "cmd + alt - 5"
+rshift + rcmd - 6 : chunkc tiling::window -d 6; khd -p "cmd + alt - 6"
+
+# switch to last active desktop
+cmd + alt - x   : `id=$(chunkc get _last_active_desktop); khd -p "cmd + alt - $id" &> /dev/null`
+
+# focus monitor
+ctrl + alt - z  : chunkc tiling::monitor -f prev
+ctrl + alt - c  : chunkc tiling::monitor -f next
+ctrl + alt - 1  : chunkc tiling::monitor -f 1
+ctrl + alt - 2  : chunkc tiling::monitor -f 2
+ctrl + alt - 3  : chunkc tiling::monitor -f 3
+
+# send window to monitor and follow focus
+ctrl + cmd - z  : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
+ctrl + cmd - c  : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
+ctrl + cmd - 1  : chunkc tiling::window --send-to-monitor 1; chunkc tiling::monitor -f 1
+ctrl + cmd - 2  : chunkc tiling::window --send-to-monitor 2; chunkc tiling::monitor -f 2
+ctrl + cmd - 3  : chunkc tiling::window --send-to-monitor 3; chunkc tiling::monitor -f 3
+
+# increase region size
+rshift + ralt - left : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+rshift + ralt - down : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+rshift + ralt - up : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+rshift + ralt - right : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+
+# decrease region size
+rshift + rcmd - left : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+rshift + rcmd - down : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+rshift + rcmd - up : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+rshift + rcmd - right : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+
+# set insertion point for focused container
+ctrl + alt - return : chunkc tiling::window --use-insertion-point cancel
+ctrl + alt - left : chunkc tiling::window --use-insertion-point west
+ctrl + alt - down : chunkc tiling::window --use-insertion-point south
+ctrl + alt - up : chunkc tiling::window --use-insertion-point north
+ctrl + alt - right : chunkc tiling::window --use-insertion-point east
+
+# rotate tree
+alt - r : chunkc tiling::desktop --rotate 90
+
+# mirror tree y-axis
+alt - y : chunkc tiling::desktop --mirror vertical
+
+# mirror tree x-axis
+alt - x : chunkc tiling::desktop --mirror horizontal
+
+# toggle desktop offset
+alt - a : chunkc tiling::desktop --toggle offset
+
+# toggle window fullscreen
+alt - f : chunkc tiling::window --toggle fullscreen
+
+# toggle window native fullscreen
+shift + alt - f : chunkc tiling::window --toggle native-fullscreen
+
+# toggle window parent zoom
+alt - d : chunkc tiling::window --toggle parent
+
+# toggle window split type
+alt - e : chunkc tiling::window --toggle split
+
+# float / unfloat window
+alt - t : chunkc tiling::window --toggle float
+
+# toggle sticky, float and resize to picture-in-picture size
+alt - s : chunkc tiling::window --toggle sticky;\
+          chunkc tiling::window --warp-floating pip-right
+
+# float next window to be tiled
+shift + alt - t : chunkc set window_float_next 1
+
+# change layout of desktop
+ctrl + alt - a : chunkc tiling::desktop --layout bsp
+ctrl + alt - s : chunkc tiling::desktop --layout monocle
+ctrl + alt - d : chunkc tiling::desktop --layout float
+
+ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
+
+# remap caps-lock to escape for this config only !!!
+# macos sierra can also perform this remap for a given keyboard
+- capslock : khd -p "- escape"
+
+# key remap for norwegian layout \ { }
+cmd - 7 : khd -p "shift + alt - 7"
+cmd - 8 : khd -p "shift + alt - 8"
+cmd - 9 : khd -p "shift + alt - 9"
