@@ -1,2 +1,15 @@
 # dotfiles
-Dotfiles for drop-in environment customization goodness.
+
+_System setup, vitamins included._
+
+## Getting Started
+
+1. [Install Brew](/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")
+2. Run `symlink-setup.sh` to copy all of the config files into `$HOME`
+3. Edit the `.brew` config to customize the applications installed and brew build steps
+4. Run `brew-load`
+5. Optional: Add your git signing key `git config --global user.signingkey <signing key>`
+
+## Acknowledgements
+
+* [paulirish](https://github.com/paulirish) for his sweet `symlink-setup.sh`
