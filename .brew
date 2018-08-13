@@ -49,6 +49,7 @@ cask install discord
 cask install etcher
 cask install flycut
 cask install gitkraken
+cask install google-chrome
 cask install hyper
 cask install imageoptim
 cask install macsvg
