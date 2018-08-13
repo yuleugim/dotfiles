@@ -1,0 +1,34 @@
+#! /usr/bin/env bash
+
+if [ -z "$PROXY_HOST" ] || [ -z "$PROXY_PORT" ] ; then
+  echo "PROXY_HOST or PROXY_PORT not defined"
+  exit 1
+fi
+
+echo "Setting up proxy to $PROXY_HOST:$PROXY_PORT..."
+
+networksetup -setwebproxy Wi-Fi "$PROXY_HOST" "$PROXY_PORT"
+networksetup -setsecurewebproxy Wi-Fi "$PROXY_HOST" "$PROXY_PORT"
+networksetup -setftpproxy Wi-Fi "$PROXY_HOST" "$PROXY_PORT"
+
+networksetup -setwebproxystate Wi-Fi on
+networksetup -setsecurewebproxystate Wi-Fi on
+networksetup -setftpproxystate Wi-Fi on
+
+echo "System Prefs proxy enabled"
+
+export http_proxy="$PROXY_HOST:$PROXY_PORT"
+export https_proxy="$PROXY_HOST:$PROXY_PORT"
+export ftp_proxy="$PROXY_HOST:$PROXY_PORT"
+
+echo "Env vars proxy enabled"
+
+git config --global http.proxy "$PROXY_HOST:$PROXY_PORT"
+git config --global https.proxy "$PROXY_HOST:$PROXY_PORT"
+
+echo "Git proxy enabled"
+
+yarn config --silent set proxy "$PROXY_HOST:$PROXY_PORT"
+yarn config --silent set https-proxy "$PROXY_HOST:$PROXY_PORT"
+
+echo "Yarn proxy enabled"

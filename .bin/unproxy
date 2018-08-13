@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+echo "Disabling proxy host $PROXY_HOST:$PROXY_PORT..."
+
+networksetup -setwebproxystate Wi-Fi off
+networksetup -setsecurewebproxystate Wi-Fi off
+networksetup -setftpproxystate Wi-Fi off
+
+echo "System Prefs proxy disabled"
+
+unset http_proxy
+unset https_proxy
+unset ftp_proxy
+
+echo "Env vars proxy disabled"
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+echo "Git proxy disabled"
+
+yarn config --silent delete proxy
+yarn config --silent delete https-proxy
+
+echo "Yarn proxy disabled"

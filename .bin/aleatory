@@ -1,0 +1,42 @@
+#! /bin/bash
+
+if ! command -v jq > /dev/null 2>&1 ; then
+    echo "Missing dependency: jq"
+    echo "See https://stedolan.github.io/jq/download/ for instructions on how to install"
+    exit 1
+fi
+
+api="kGc4HUZIrAHvb97FrbMIyv44DUM5cBsvMa90NAJHVPTA7u7DSp0lPHYFZLHR-390Vo54oAhip4ckt_vA7IctVrkuVDIho5InUZBbk3TKGZdyVNCY3gykyKWDmP_ZWHYx"
+rn_limit=$(( RANDOM % 49 ))
+rn_offset=$(( RANDOM % 449 ))
+
+if /usr/bin/env locateme > /dev/null 2>&1; then
+    location=$(locateme -f "{LAT} {LON}")
+    IFS=' ' read -a coordinates <<< "$location"
+    latitude=${coordinates[0]}
+    longitude=${coordinates[1]}
+else
+    echo "Missing locateme. To install with Brew, run \`brew install locateme\`"
+    echo "Using hardcoded latitude and longitude"
+    latitude=40.7510276
+    longitude=-73.9890311
+fi
+
+# Querystring params
+radius=500
+price=1,2
+limit=50
+offset=$rn_offset
+
+curl \
+    --silent \
+    --get \
+    -H "Authorization: Bearer $api" \
+    --data-urlencode "latitude=$latitude" \
+    --data-urlencode "longitude=$longitude" \
+    --data-urlencode "radius=$radius" \
+    --data-urlencode "price=$price" \
+    --data-urlencode "limit=$limit" \
+    --data-urlencode "offset=$offset" \
+    "https://api.yelp.com/v3/businesses/search" \
+| jq ".businesses[$rn_limit] | {name: .name, url: .url, reviews: .review_count, rating: .rating, price: .price, location: .location}"

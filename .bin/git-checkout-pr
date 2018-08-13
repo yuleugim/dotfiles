@@ -1,0 +1,24 @@
+#!/bin/sh
+
+USAGE="PR #"
+LONG_USAGE="PR #"
+SUBDIRECTORY_OK="Yes"
+
+source "$(git --exec-path)/git-sh-setup"
+
+function _checkout_pr() {
+  if [[ -n "$1" ]]; then
+    PR="$1"
+    if [[ $# >= 2 ]]; then
+      if [[ -n "$2" -a $(git ls-remote "$2") > /dev/null 2>&1 ]]; then
+        REMOTE=$2
+      fi
+    fi
+    git fetch "$REMOTE" "pull/$PR/head:pr$PR"
+    git checkout "pr$PR"
+  else
+    usage
+  fi
+}
+
+_checkout_pr $1 $2
