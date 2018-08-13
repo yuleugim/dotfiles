@@ -1,0 +1,22 @@
+[core]
+	editor = nvim
+	excludesfile = /Users/migueluy/.gitignore_global
+[user]
+	name = Miguel Uy
+	email = yuleugim@gmail.com
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	history = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' -p -M --follow --stat --
+	stash-ls = stash list --pretty=format:'%gd: %Cred%h%Creset %Cgreen[%ar]%Creset %s'
+[commit]
+	gpgsign = true
+	template = /Users/migueluy/.stCommitMsg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[url "https://github.com/"]
+[gpg]
+	program = gpg
