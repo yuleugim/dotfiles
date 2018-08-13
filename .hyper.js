@@ -5,10 +5,11 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 14,
+    fontSize: 16,
 
     // font family with optional fallbacks
     fontFamily: '"Roboto Mono for Powerline", "SourceCodePro+Powerline+Awesome Regular", Monaco, Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    // fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
@@ -93,11 +94,12 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     'hyperlinks',
-    'gitrocket',
     "hyperterm-paste",
     "hyper-alt-click",
     "hyper-quit",
-    "hyper-snazzy"
+    "nord-hyper",
+    "hypercwd",
+    "hyper-search"
   ],
 
   // in development, you can create a directory under
