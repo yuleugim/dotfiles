@@ -45,7 +45,6 @@ install zsh-syntax-highlighting
 cleanup
 cask install 1password
 cask install alfred
-cask install atom
 cask install discord
 cask install etcher
 cask install flycut
