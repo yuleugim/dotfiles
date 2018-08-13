@@ -1,4 +1,4 @@
-" vim-bootstrap 5268b45
+"" vim-bootstrap 5268b45
 
 "*****************************************************************************
 "" Vim-PLug core
@@ -129,7 +129,7 @@ set backspace=indent,eol,start
 
 "" Tabs. May be overridden by autocmd rules
 set tabstop=2
-set softtabstop=0
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smarttab
@@ -463,7 +463,7 @@ let g:javascript_enable_domhtmlcss = 1
 " vim-javascript
 augroup vimrc-javascript
   autocmd!
-  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4
+  autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab|set softtabstop=2
 augroup END
 
 
