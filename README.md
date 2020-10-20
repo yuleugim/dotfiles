@@ -4,7 +4,7 @@ _System setup, vitamins included._
 
 ## Getting Started
 
-1. [Install Brew](/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")
+1. [Install Brew](https://brew.sh/)
 2. Run `symlink-setup.sh` to copy all of the config files into `$HOME`
 3. Edit the `.brew` config to customize the applications installed and brew build steps
 4. Run `brew-load`

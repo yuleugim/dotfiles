@@ -86,6 +86,12 @@ module.exports = {
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
 
+  // See https://github.com/zeit/hyper/blob/master/app/keymaps/darwin.json
+  keymaps: {
+    "pane:splitVertical": "command+m",
+    "pane:splitHorizontal": "command+shift+m"
+  },
+
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
   // examples:
@@ -93,14 +99,20 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
+    'gitrocket',
     'hyperlinks',
-    "hyperterm-paste",
-    "hyper-alt-click",
-    "hyper-quit",
-    "nord-hyper",
-    "hypercwd",
-    "hyper-search"
+    'hyperterm-paste',
+    'hyperterm-tabs',
+    'hyper-alt-click',
+    'hyper-quit',
+    'nord-hyper',
+    'hypercwd',
+    'hyper-search'
   ],
+
+  hypercwd: {
+    initialWorkingDirectory: '~/Projects'
+  },
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

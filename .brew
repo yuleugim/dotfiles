@@ -1,63 +1,37 @@
-install autoconf
-install avr-binutils
-install avr-gcc
-install avrdude
-install bash
-install bdw-gc
-install chunkwm
-install composer
-install gcc-arm-none-eabi
-install git
-install git-flow
-install gnupg
-install gnutls
-install httpd
-install httpie
-install imagemagick
-install khd
-install locateme
-install neofetch
-install neovim
-install nghttp2
-install nmap
-install node
-install ocrmypdf
-install openssl
-install p7zip
-install pandoc
-install php72
-install pinentry
-install pinentry-mac
-install pipes-sh
-install python3
-install qpdf
-install readline
-install teensy_loader_cli
-install tnftp
-install tnftpd
-install wget
-install wp-cli
-install yarn
-install zsh
-install zsh-autosuggestions
-install zsh-completions
-install zsh-syntax-highlighting
+install autoconf \
+        bash \
+        composer \
+        gcc-arm-none-eabi \
+        git \
+        httpie \
+        imagemagick \
+        locateme \
+        neofetch \
+        neovim \
+        node \
+        ocrmypdf \
+        openssl \
+        p7zip \
+        pandoc \
+        python3 \
+        qpdf \
+        skhd \
+        teensy_loader_cli \
+        yabai \
+        yarn \
+        zsh \
+        zsh-autosuggestions \
+        zsh-completions \
+        zsh-syntax-highlighting
 cleanup
-cask install 1password
-cask install alfred
-cask install discord
-cask install etcher
-cask install flycut
-cask install gitkraken
-cask install google-chrome
-cask install hyper
-cask install imageoptim
-cask install macsvg
-cask install sequel-pro
-cask install slack
-cask install sourcetree
-cask install sublime-text
-cask install vagrant
-cask install virtualbox
-cask install visual-studio-code
-cask install xquartz
+cask install 1password \
+             discord \
+             etcher \
+             flycut \
+             google-chrome \
+             hyper \
+             imageoptim \
+             sequel-pro \
+             slack \
+             sublime-text \
+             visual-studio-code
